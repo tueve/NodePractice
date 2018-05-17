@@ -1,0 +1,15 @@
+<h1>TODO LIST</h1>
+<div class="row justify-content-center">
+{{#each todos}}
+    <div class="card col-md-4 m-2" style="width: 18rem;">
+      <div class="card-body" >
+        <h5 class="card-title">{{title}}</h5>
+        <p class="card-text">{{detail}}</p>
+        <a href="/todo/edit/{{id}}" class="btn btn-primary">Edit</a>
+      </div>
+    </div>
+  
+{{else}} 
+  <p>No todo found</p>
+{{/each}}
+  </div>
