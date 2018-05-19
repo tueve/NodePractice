@@ -1,0 +1,16 @@
+<div class="container">
+  <form action="/todo/update/{{todo._id}}?_method=PUT" method="post">
+  <input type="hidden" name="_method" value="PUT"/>
+  <div class="form-group">
+    <label for="title">Title- {{todo._id}}</label>
+    <input name="title" type="text" value="{{todo.title}}" class="form-control" id="title" aria-describedby="title" placeholder="title" >
+    {{!-- <small id="titleHelper" class="form-text text-muted">{{error.title}}</small> --}}
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <input name="description" type="text" value="{{todo.description}}" class="form-control" id="description" placeholder="description" >
+    {{!-- <small id="descriptionHelper" class="form-text text-muted">{{error.description}}</small>     --}}
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
