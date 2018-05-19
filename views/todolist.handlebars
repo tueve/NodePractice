@@ -1,15 +1,61 @@
-<h1>TODO LIST</h1>
+<div class="row justify-content-center">
+  <button type="button" class="btn btn-primary btn-large col-3" data-toggle="modal" data-target="#addModal">
+    ADD
+  </button>
+</div>
 <div class="row justify-content-center">
 {{#each todos}}
-    <div class="card col-md-4 m-2" style="width: 18rem;">
-      <div class="card-body" >
-        <h5 class="card-title">{{title}}</h5>
-        <p class="card-text">{{detail}}</p>
-        <a href="/todo/edit/{{id}}" class="btn btn-primary">Edit</a>
+  <div class="card col-md-4 m-2" style="width: 18rem;">
+    <div class="card-body" >
+      <h5 class="card-title">{{title}}</h5>
+      <p class="card-text">{{description}}</p>
+      <div class="row">
+        <a href="/todo/edit/{{id}}" class="btn btn-primary btn-large col-6">Edit</a>
+        <form class="col-6" method="POST" action="/todo/delete/{{id}}?_method=DELETE" enctype="application/x-www-form-urlencoded">
+          <button type="submit" class="btn btn-primary btn-large btn-danger col-12">Delete</button>
+        </form>
       </div>
     </div>
-  
+  </div>
 {{else}} 
   <p>No todo found</p>
 {{/each}}
   </div>
+
+  <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/todo" method="post">
+        <div class="modal-body">
+          <div class="container">
+              <div class="form-group">
+                <label for="title">Title</label>
+                <input name="title" type="text" class="form-control" id="title" aria-describedby="title" placeholder="title" required >
+                {{!-- <small id="titleHelper" class="form-text text-muted">{{error.title}}</small> --}}
+              </div>
+              <div class="form-group">
+                <label for="description">Description</label>
+                <input name="description" type="text" class="form-control" id="description" placeholder="description" required >
+                {{!-- <small id="descriptionHelper" class="form-text text-muted">{{error.description}}</small>     --}}
+              </div>
+              
+          </div>  
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
