@@ -1,3 +1,4 @@
+{{> _header}}
 <section class="bg-primary" id="about">
   <div class="container">
     <div class="row">
@@ -151,11 +152,57 @@
   </div>
 </section>
 
-<section class="bg-dark text-white">
+{{!-- <section class="bg-dark text-white" id="projects">
   <div class="container text-center">
     <h2 class="mb-4">Playing with Nodejs</h2>
     <a class="btn btn-light btn-xl sr-button" href="https://nodejs.org/en/">Go Now!</a>
   </div>
+</section> --}}
+{{#if usernameAuth.username}}
+  <section class="bg-white text-white" id="projects">
+  <div class="container text-center">
+    <h2 class="mb-4 text-dark">Projects with Nodejs</h2>
+    <div class="row">
+      <div class="col-3">
+        <div class="card" style="background-image: url('img/portfolio/thumbnails/6.jpg');background-size: cover; background-position: center;">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-3">
+        <div class="card" style="background-image: url('img/portfolio/thumbnails/6.jpg');background-size: cover; background-position: center;">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-3">
+        <div class="card" style="background-image: url('img/portfolio/thumbnails/6.jpg');background-size: cover; background-position: center;">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-3">
+        <div class="card" style="background-image: url('img/portfolio/thumbnails/6.jpg');background-size: cover; background-position: center;">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="/todo/list" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
-
-
+{{/if}}

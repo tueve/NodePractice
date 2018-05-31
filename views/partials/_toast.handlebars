@@ -84,8 +84,15 @@ function Toast(bgColor, textColor){
 
 {{#if delete_msg}} 
   <script> 
-    var toast = new Toast('rgba(152, 22, 22, 01)', 'rgba(22, 25, 55, 0.9)');
+    var toast = new Toast('rgba(152, 22, 22, 01)', 'rgba(245, 255, 255, 0.9)');
     toast.show('{{delete_msg}}')
+  </script>  
+{{/if}}
+
+{{#if error_msg}} 
+  <script> 
+    var toast = new Toast('rgba(152, 22, 22, 01)', 'rgba(255, 255, 255, 1)');
+    toast.show('{{error_msg}}')
   </script>  
 {{/if}}
 
@@ -93,5 +100,12 @@ function Toast(bgColor, textColor){
   <script> 
     var toast = new Toast;
     toast.show('{{update_msg}}')
+  </script>  
+{{/if}}
+
+{{#if error}} 
+  <script> 
+    var toast = new Toast('rgba(152, 22, 22, 01)', 'rgba(255, 255, 255, 1)');
+    toast.show('{{error}}')
   </script>  
 {{/if}}

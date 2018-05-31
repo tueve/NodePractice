@@ -1,0 +1,50 @@
+<section class="masthead text-white d-flex bg-dark"  id="projects">
+  <div class="container my-auto">
+    <div class="row">
+      <h3 class="col section-heading text-white text-center">REGISTER</h3> 
+      <form action="/user/register" method="post" class="col-12">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" value="{{email}}" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputUsername">Username</label>
+          <input name="username" type="text" value="{{username}}" class="form-control" id="exampleInputUsername" aria-describedby="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword2">Password Confirm</label>
+          <input type="password" class="form-control" id="confirm_password" placeholder="Retype-Password">
+        </div>
+        <div class="form-group text-center">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" id="user-register">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+
+
+<script>
+var password = document.getElementById("password")
+  , confirm_password = document.getElementById("confirm_password");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.addEventListener('ValueChange',validatePassword );
+confirm_password.addEventListener('keyup',validatePassword);
+
+</script>

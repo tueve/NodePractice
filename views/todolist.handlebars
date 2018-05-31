@@ -1,26 +1,33 @@
-<div class="row justify-content-center">
-  <button type="button" class="btn btn-primary btn-large col-3" data-toggle="modal" data-target="#addModal">
-    ADD
-  </button>
-</div>
-<div class="row justify-content-center">
-{{#each todos}}
-  <div class="card col-md-4 m-2" style="width: 18rem;">
-    <div class="card-body" >
-      <h5 class="card-title">{{title}}</h5>
-      <p class="card-text">{{description}}</p>
-      <div class="row">
-        <a href="/todo/edit/{{id}}" class="btn btn-primary btn-large col-6">Edit</a>
-        <form class="col-6" method="POST" action="/todo/delete/{{id}}?_method=DELETE" enctype="application/x-www-form-urlencoded">
-          <button type="submit" class="btn btn-primary btn-large btn-danger col-12">Delete</button>
-        </form>
-      </div>
+<section class="bg-secondary" id="about">
+  <div class="container">
+    <div class="row justify-content-center p-5">
+      <h3 class="col-12 text-center text-white mb-3"> TODO LIST </h3>
+      <button type="button" class="btn btn-default btn-large col-3" data-toggle="modal" data-target="#addModal">
+        ADD
+      </button>
     </div>
+    <div class="row justify-content-center">
+    {{#each todos}}
+      <div class="card col-md-4 m-2" style="width: 18rem;">
+        <div class="card-body" >
+          <h5 class="card-title">{{title}}</h5>
+          <p class="card-text">{{description}}</p>
+          <div class="row">
+            <a href="/todo/edit/{{id}}" class="btn btn-secondary btn-large col-6">Edit</a>
+            <form class="col-6" method="POST" action="/todo/delete/{{id}}?_method=DELETE" enctype="application/x-www-form-urlencoded">
+              <button type="submit" class="btn btn-primary btn-large btn-danger col-12">Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    {{else}} 
+      <p>No todo found</p>
+    {{/each}}
+      </div>
   </div>
-{{else}} 
-  <p>No todo found</p>
-{{/each}}
-  </div>
+</section>
+
+
 
   <!-- Button trigger modal -->
 

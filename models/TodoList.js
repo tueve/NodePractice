@@ -8,7 +8,8 @@ const todoSchema = new Schema({
 	date: {
 		type: Date,
 		default: Date.now()
-	}
+	},
+	user: String
 });
 
 mongoose.model('todo', todoSchema);
