@@ -84,7 +84,9 @@ app.post('/logout', (req, res) => {
 		res.redirect('/');
 });
 
-// use Route
+// handle exception page not found app.use(function (req, res, next) {
+// 		req.flash('error_msg', "sorry, page not found") 		res 				.status(404)
+// 				.redirect('/'); }) use Route
 
 app.use('/todo', todo);
 app.use('/user', user);
