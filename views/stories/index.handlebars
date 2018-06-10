@@ -1,0 +1,153 @@
+<section class="bg-dark" id="story-dashboard-main">
+  <div class="container">
+    <div class="row justify-content-center p-2">
+      <h3 class="text-white">DASHBOARD</h3>
+    </div>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="story-list-tab" data-toggle="tab" href="#story-list" role="tab" aria-controls="story-list
+    story" aria-selected="true">STORY LIST</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="story-add-tab" data-toggle="tab" href="#story-add" role="tab" aria-controls="story-add
+    story" aria-selected="false">ADD</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="story-profile-tab" data-toggle="tab" href="#story-profile" role="tab" aria-controls="story-profile"
+          aria-selected="false">PROFILE</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="story">
+      <div class="tab-pane p-3 fade show active" id="story-list" role="tabpanel" aria-labelledby="story-list-tab">
+        <table class="table table-dark">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Title</th>
+              <th scope="col">Date</th>
+              <th scope="col">Status</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody id="accordionExample">
+            {{#each stories}}
+            <tr>
+              <th scope="row">{{@index}}</th>
+              <td>{{title}}</td>
+              <td>{{dateFormatToShow date}}</td>
+              <td>{{status}}</td>
+              <td>
+                <button type="button" class="btn btn-primary btn-sm mr-1" data-toggle="collapse" data-target="#form-edit-{{_id}}" aria-expanded="true"
+                  aria-controls="form-edit-{{_id}}">Edit</button>
+                <form class="d-inline-block" method="POST" action="/story/delete/{{_id}}?_method=DELETE" enctype="application/x-www-form-urlencoded">
+                  <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </form>
+              </td>
+            </tr>
+            <tr style="padding: 0">
+              <td colspan="5" style="padding: 0">
+                <div id="form-edit-{{_id}}" class="collapse" aria-labelledby="form-edit-{{_id}}" data-parent="#accordionExample">
+                  <div class="card-body">
+                    <form action="/story/update/{{_id}}?_method=PUT" method="post">
+                      <div class="row justify-content-left mb-3">
+                        <label for="title" class="text-white">Title</label>
+                        <input type="text" class="form-control" id="title-{{_id}}" name="title" value="{{title}}" required>
+                      </div>
+                      <div class="row justify-content-left pb-2">
+                        <label for="status" class="text-white">Status</label>
+                        <select class="custom-select" id="status-{{_id}}" name="status" value="{{status}}">
+                          <option selected value="Public">Public</option>
+                          <option value="Private">Private</option>
+                          <option value="Unpublic">Unpublic</option>
+                        </select>
+                      </div>
+                      <div class="row justify-content-left">
+                        <div class="form-group form-check">
+                          <input type="checkbox" {{#if enableCmt}}checked{{/if}} class="form-check-input" id="enableCmt-{{_id}}" name="enableCmt">
+                          <label class="form-check-label text-white" for="enableCmt">Enable comment</label>
+                        </div>
+                      </div>
+                      <div class="row justify-content-center">
+                        <div class="form-group form-check col-12 p-0 text-dark">
+                          <textarea class="jodit-area text-dark" name="editor" default-value="{{editor}}"></textarea>
+                        </div>
+                      </div>
+                      <button type="submit" class="btn btn-primary" id="saveStory-{{_id}}">SAVE</button>
+                    </form>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+
+        <nav aria-label="story pagiantion">
+          <ul class="pagination" data-curr="{{current}}" style="justify-content: center">
+            <li class="page-item pagination-prev" >
+              <a class="page-link" href="/story/{{dec current}}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+              </a>
+            </li>
+            {{#times pages}}
+            <li class="page-item story-item-pagination">
+              <a class="page-link" href="/story/{{this}}">{{this}}</a>
+            </li>
+            {{/times}}
+            <li class="page-item pagination-next">
+              <a class="page-link" href="/story/{{inc current}}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="tab-pane p-3 fade" id="story-add" role="tabpanel" aria-labelledby="story-add-tab">
+        <form action="/story/add" method="post">
+          <div class="row justify-content-left mb-3">
+            <label for="title" class="text-white">Title</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Title" required>
+          </div>
+          <div class="row justify-content-left pb-2">
+            <label for="status" class="text-white">Status</label>
+            <select class="custom-select" id="status" name="status">
+              <option selected value="Public">Public</option>
+              <option value="Private">Private</option>
+              <option value="Unpublic">Unpublic</option>
+            </select>
+          </div>
+          <div class="row justify-content-left">
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="enableCmt" name="enableCmt">
+              <label class="form-check-label text-white" for="enableCmt">Enable comment</label>
+            </div>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="form-group form-check col-12 p-0">
+              <textarea class="jodit-area" name="editor"></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" id="saveStory">SAVE</button>
+        </form>
+      </div>
+      <div class="tab-pane p-3 fade" id="story-profile" role="tabpanel" aria-labelledby="story-profile-tab">...</div>
+    </div>
+  </div>
+</section>
+
+<script>
+  var paginationItem = $(".story-item-pagination");
+  var currPage = $(".pagination").data('curr');
+  var nextPage = $(".pagination-next");
+  var prevPage = $(".pagination-prev");
+  $(paginationItem[currPage - 1]).addClass('active');
+  if(currPage===1) {
+    prevPage.hide()
+  }
+  if(currPage===paginationItem.length) {
+    nextPage.hide()
+  }
+</script>
