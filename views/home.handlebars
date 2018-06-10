@@ -152,28 +152,26 @@
   </div>
 </section>
 
-{{!-- <section class="bg-dark text-white" id="projects">
-  <div class="container text-center">
-    <h2 class="mb-4">Playing with Nodejs</h2>
-    <a class="btn btn-light btn-xl sr-button" href="https://nodejs.org/en/">Go Now!</a>
-  </div>
-</section> --}}
 {{#if usernameAuth.username}}
   <section class="bg-white text-white" id="projects">
   <div class="container text-center">
     <h2 class="mb-4 text-dark">Projects with Nodejs</h2>
     <div class="row">
-      
-      
-
-      
-
-      <div class="col-3">
-        <div class="card" style="background-image: url('img/portfolio/thumbnails/6.jpg');background-size: cover; background-position: center;">
+      <div class="col-12 col-lg-6 mb-3">
+        <div class="card bg-dark p-4">
           <div class="card-body">
             <h5 class="card-title">TODO LIST</h5>
             <p class="card-text">Todolist on your account.</p>
-            <a href="/todo/list" class="btn btn-primary">Go to todolist page</a>
+            <a href="/todo/list" class="btn btn-primary">todolist</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6 mb-3">
+        <div class="card bg-dark p-4">
+          <div class="card-body">
+            <h5 class="card-title">STORY</h5>
+            <p class="card-text">Story book.</p>
+            <a href="/story/1" class="btn btn-primary">storybook</a>
           </div>
         </div>
       </div>
