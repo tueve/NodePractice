@@ -1,0 +1,22 @@
+<section class="bg-white" id="story-dashboard-main">
+  <div class="container">
+    <div class="row justify-content-center p-2">
+      <div class="card-columns">
+        {{#each stories}}
+        <div class="card shadow p-3 bg-white rounded">
+          <div class="card-body">
+            <h5 class="card-title">{{title}}</h5>
+            <p class="card-text">{{{editor}}}</p>
+            <h4>{{user.username}}</h4>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</section>
+
+{{#if usernameAuth.username}}
+<a class="fixed-bottom m-4" style="right: 20px;left: auto" href="/story/1">
+  <i class="fas fa-plus-square" style="font-size: 32px"></i>
+</a>{{/if}}

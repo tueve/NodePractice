@@ -103,6 +103,7 @@ app.set('view engine', 'handlebars');
 const todo = require('./routes/todo');
 const user = require('./routes/user');
 const story = require('./routes/story');
+const board = require('./routes/bullet');
 
 const auth = require('./routes/auth');
 
@@ -134,6 +135,7 @@ app.post('/logout', (req, res) => {
 app.use('/todo', todo);
 app.use('/user', user);
 app.use('/story', story);
+app.use('/board', board);
 
 app.use('/auth', auth);
 
