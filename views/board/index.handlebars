@@ -2,8 +2,8 @@
   <div class="container">
     <div class="row justify-content-center p-2">
       <div class="col-12 text-align-center">
-        <div class="row mb-3">
-          <div class="col-md-12 col-lg-8 btn-group btn-group-toggle">
+        <div class="row mb-5 justify-content-center">
+          <div class="btn-group btn-group-toggle">
             <label class="btn btn-secondary js_isotope-bulleed active" data-filter="*">
               <input type="radio" name="options" id="show-all" autocomplete="off"> All
             </label>
@@ -13,13 +13,13 @@
             </label>
             {{/each}}
           </div>
-          <div class="col-md-12 col-lg-4 d-flex">
+          {{!-- <div class="col-md-12 col-lg-4 d-flex">
             <div class="ml-auto btn-group btn-group-toggle">
               <label class="btn btn-secondary js_isotope-input pl-3 pr-3 active">
                 <input type="text" name="search" id="feeds-search" autocomplete="off" placeholder="Search" />
               </label>
             </div>
-          </div>
+          </div> --}}
         </div>
       </div>
       <div class="col-12 text-align-center">
@@ -68,7 +68,6 @@
     $('.js_isotope-bulleed').each(function (e) {
       $(this).removeClass('active')
     })
-    console.log($('.js_isotope-bulleed'))
     $(this).addClass('active')
     $grid.isotope({
       filter: filterValue
