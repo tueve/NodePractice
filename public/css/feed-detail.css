@@ -703,6 +703,8 @@ only screen and (min-width: 40.063em) and (max-width: 70em) {
 .side-bar-tool {
   display: flex;
   flex-direction: column;
+  width: 40px;
+  left: auto;
 }
 
 .side-bar-tool i {
