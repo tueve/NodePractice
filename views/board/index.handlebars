@@ -26,18 +26,13 @@
         <div class="grid">
           {{#each feeds}}
           <div class="grid-item {{category}}" data-category="{{category}}">
-            <div class="card">
-              <div class="front">
-                <h5>{{title}}</h5>
+            <a href="/feed/{{_id}}" class="link">
+              <div class="card">
+                <div class="front">
+                  <span class="underline">{{title}}</span>
+                </div>
               </div>
-              <div class="back">
-                <p>
-                  <strong>
-                    <a href="/feed/{{_id}}" class="">More detail ... </a>
-                  </strong>
-                </p>
-              </div>
-            </div>
+            </a>
           </div>
           {{/each}}
         </div>
@@ -79,13 +74,4 @@
       filter: filterValue
     });
   })
-
-  $(document).ready(function () {
-    $('.card').hover(function () {
-      console.log($(this), 'hover')
-      $(this).addClass('flipped');
-    }, function () {
-      $(this).removeClass('flipped');
-    });
-  });
 </script>

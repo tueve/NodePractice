@@ -89,114 +89,53 @@
   color: white;
 }
 
-/* CSS code from tutorial: http://24ways.org/2010/intro-to-css-3d-transforms/ */
-
 #cardlist {
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: auto;
   position: relative;
   -webkit-perspective: 800;
 }
 
 .card {
-  width: 100%;
-  height: 100%;
-  margin-top: 20px;
-  -webkit-transform-style: preserve-3d;
-  -webkit-transition: -webkit-transform 1s;
-}
-
-.card:hover {
+  margin: 0px 10px;
+  padding: 10px;
   cursor: pointer;
-}
-
-.card div {
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-}
-
-.card .front {
-  background: white;
-  display: flex;
-  justify-items: center;
-}
-
-.card .back {
-  background: #f05f40;
-  -webkit-transform: rotateY(180deg);
-}
-
-.card .back a {
-  color: white;
-  font-weight: bold;
-}
-
-.card.flipped {
-  -webkit-transform: rotateY(180deg);
-}
-
-.card.book {
-  -webkit-transform-origin: right center;
-}
-
-.card.reverse {
-  -webkit-transform-origin: right center;
-}
-
-.card.reverse.flipped {
-  -webkit-transform: translateX(-100%) rotateY(-180deg);
-}
-
-/* Element in card style */
-
-.card {
-  font-family: 'Lato', sans-serif;
-  text-align: center;
-  min-height: 200px;
-}
-
-.card div {
-  border-radius: 10px;
-}
-
-h2 {
-  text-align: center;
-  color: #fff;
-  font-weight: normal;
-  margin-top: 100px;
-}
-
-button {
-  padding: 5px;
-  background: transparent;
-  border: 1px solid #fff;
-  color: #fff;
-  font-size: 14pt;
-  font-weight: 300;
-  font-family: 'Lato';
-}
-
-.card p {
-  padding: 15px 25px;
-  text-align: left;
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  left: -30px;
-  -webkit-transition: 1s;
-  -webkit-transition-delay: 0.4s;
-}
-
-.card.flipped p {
-  opacity: 1;
-  left: 0;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  border-radius: 20px;
+  box-shadow: 1px 1px 5px 0px rgba(82, 82, 82, 0.75);
+  transition: all 100ms ease-in-out;
 }
 
 .card h5 {
-  display: flex;
-  justify-items: center;
-  align-items: center;
+  color: black;
+}
+
+.card:hover {
+  top: -1.5px;
+  left: -1.5px;
+  box-shadow: 3px 3px 15px 0px rgba(82, 82, 82, 0.85);
+}
+
+.card:active {
+  background-color: #e50000;
+  box-shadow: inset 0 0 10px rgba(82, 82, 82, 0.85);
+}
+
+.underline {
+  /* I don't know why this is needed, I just added it and it worked in IE Edge. If we remove this width, the gradient breaks in IE Edge */
+  width: calc(100%);
+  background-image: linear-gradient(transparent calc(100% - 2px), black 10px);
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  transition: background-size 1s;
+}
+
+.link:hover .underline {
+  background-size: 100% 100%;
+}
+
+#story-dashboard-main a:hover {
+  text-decoration: none;
 }
