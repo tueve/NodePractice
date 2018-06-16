@@ -5,18 +5,18 @@
         <div class="row mb-3">
           <div class="col-md-12 col-lg-8 btn-group btn-group-toggle">
             <label class="btn btn-secondary js_isotope-bulleed active" data-filter="*">
-                <input type="radio" name="options" id="show-all" autocomplete="off" > All
-              </label>
+              <input type="radio" name="options" id="show-all" autocomplete="off"> All
+            </label>
             {{#each categories}}
-              <label class="btn btn-secondary js_isotope-bulleed" data-filter=".{{category}}">
-                <input type="radio" name="options" id="{{category}}" autocomplete="off"> {{category}}
-              </label>
+            <label class="btn btn-secondary js_isotope-bulleed" data-filter=".{{category}}">
+              <input type="radio" name="options" id="{{category}}" autocomplete="off"> {{category}}
+            </label>
             {{/each}}
           </div>
           <div class="col-md-12 col-lg-4 d-flex">
             <div class="ml-auto btn-group btn-group-toggle">
               <label class="btn btn-secondary js_isotope-input pl-3 pr-3 active">
-                <input type="text" name="search" id="feeds-search" autocomplete="off" placeholder="Search"/> 
+                <input type="text" name="search" id="feeds-search" autocomplete="off" placeholder="Search" />
               </label>
             </div>
           </div>
@@ -27,15 +27,21 @@
           {{#each feeds}}
           <div class="grid-item {{category}}" data-category="{{category}}">
             <div class="card">
-              <div class="card-body" >
-                <h5 class="card-title">{{title}}</h5>
-                <a href="{{link}}" class="">More detail ... </a>
+              <div class="front">
+                <h5>{{title}}</h5>
+              </div>
+              <div class="back">
+                <p>
+                  <strong>
+                    <a href="/feed/{{_id}}" class="">More detail ... </a>
+                  </strong>
+                </p>
               </div>
             </div>
           </div>
           {{/each}}
         </div>
-      </div>   
+      </div>
     </div>
   </div>
 </section>
@@ -52,28 +58,34 @@
 <script>
   // external js: isotope.pkgd.js
 
-// init Isotope
-var $grid = $('.grid').isotope({
-  itemSelector: '.grid-item',
-  masonry: {
-    columnWidth: 200,
-    isFitWidth: true,
-    gutter: 10
-  }
-});
+  // init Isotope
+  var $grid = $('.grid').isotope({
+    itemSelector: '.grid-item',
+    masonry: {
+      columnWidth: 200,
+      isFitWidth: true,
+      gutter: 10
+    }
+  });
 
-$('.js_isotope-bulleed').on('click', function(e) {
-  const filterValue =  $(this).attr('data-filter');
-  $('.js_isotope-bulleed').each(function(e){
-    $(this).removeClass('active')
+  $('.js_isotope-bulleed').on('click', function (e) {
+    const filterValue = $(this).attr('data-filter');
+    $('.js_isotope-bulleed').each(function (e) {
+      $(this).removeClass('active')
+    })
+    console.log($('.js_isotope-bulleed'))
+    $(this).addClass('active')
+    $grid.isotope({
+      filter: filterValue
+    });
   })
-  console.log($('.js_isotope-bulleed'))
-  $(this).addClass('active')
-  $grid.isotope({ filter: filterValue });
-})
 
-
-
-
-
+  $(document).ready(function () {
+    $('.card').hover(function () {
+      console.log($(this), 'hover')
+      $(this).addClass('flipped');
+    }, function () {
+      $(this).removeClass('flipped');
+    });
+  });
 </script>
