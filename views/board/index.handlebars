@@ -1,22 +1,79 @@
-<section class="bg-white" id="story-dashboard-main">
+<section class="bg-dark" id="story-dashboard-main">
   <div class="container">
     <div class="row justify-content-center p-2">
-      <div class="card-columns">
-        {{#each stories}}
-        <div class="card shadow p-3 bg-white rounded">
-          <div class="card-body">
-            <h5 class="card-title">{{title}}</h5>
-            <p class="card-text">{{{editor}}}</p>
-            <h4>{{user.username}}</h4>
+      <div class="col-12 text-align-center">
+        <div class="row mb-3">
+          <div class="col-md-12 col-lg-8 btn-group btn-group-toggle">
+            <label class="btn btn-secondary js_isotope-bulleed active" data-filter="*">
+                <input type="radio" name="options" id="show-all" autocomplete="off" > All
+              </label>
+            {{#each categories}}
+              <label class="btn btn-secondary js_isotope-bulleed" data-filter=".{{category}}">
+                <input type="radio" name="options" id="{{category}}" autocomplete="off"> {{category}}
+              </label>
+            {{/each}}
+          </div>
+          <div class="col-md-12 col-lg-4 d-flex">
+            <div class="ml-auto btn-group btn-group-toggle">
+              <label class="btn btn-secondary js_isotope-input pl-3 pr-3 active">
+                <input type="text" name="search" id="feeds-search" autocomplete="off" placeholder="Search"/> 
+              </label>
+            </div>
           </div>
         </div>
-        {{/each}}
       </div>
+      <div class="col-12 text-align-center">
+        <div class="grid">
+          {{#each feeds}}
+          <div class="grid-item {{category}}" data-category="{{category}}">
+            <div class="card">
+              <div class="card-body" >
+                <h5 class="card-title">{{title}}</h5>
+                <a href="{{link}}" class="">More detail ... </a>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>   
     </div>
   </div>
 </section>
+
+
+
+
 
 {{#if usernameAuth.username}}
 <a class="fixed-bottom m-4" style="right: 20px;left: auto" href="/story/1">
   <i class="fas fa-plus-square" style="font-size: 32px"></i>
 </a>{{/if}}
+
+<script>
+  // external js: isotope.pkgd.js
+
+// init Isotope
+var $grid = $('.grid').isotope({
+  itemSelector: '.grid-item',
+  masonry: {
+    columnWidth: 200,
+    isFitWidth: true,
+    gutter: 10
+  }
+});
+
+$('.js_isotope-bulleed').on('click', function(e) {
+  const filterValue =  $(this).attr('data-filter');
+  $('.js_isotope-bulleed').each(function(e){
+    $(this).removeClass('active')
+  })
+  console.log($('.js_isotope-bulleed'))
+  $(this).addClass('active')
+  $grid.isotope({ filter: filterValue });
+})
+
+
+
+
+
+</script>

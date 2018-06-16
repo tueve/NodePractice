@@ -58,3 +58,38 @@
 .google-btn:active {
   background: #1669F2;
 }
+
+/* ---- grid ---- */
+
+.grid {
+  padding: 10px;
+  margin: 0 auto;
+}
+
+/* clear fix */
+
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- .element-item ---- */
+
+.grid-item {
+  float: left;
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.grid-item>.card:hover {
+  transform: translate(-1px, -1px) scale(1.05);
+  border: 2px solid #f05f40;
+}
+
+#feeds-search {
+  background: #6c757d;
+  outline: #6c757d;
+  border: #6c757d;
+  color: white;
+}
