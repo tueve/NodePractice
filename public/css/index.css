@@ -98,7 +98,7 @@
 
 .card {
   margin: 0px 10px;
-  padding: 10px;
+  padding: 16px;
   cursor: pointer;
   position: relative;
   top: 0px;
@@ -115,18 +115,21 @@
 .card:hover {
   top: -1.5px;
   left: -1.5px;
-  box-shadow: 3px 3px 15px 0px rgba(82, 82, 82, 0.85);
+  box-shadow: 3px 3px 15px 0px rgba(255, 255, 255, 0.85);
+  background-color: #e50;
+  color: white;
 }
 
 .card:active {
-  background-color: #e50000;
-  box-shadow: inset 0 0 10px rgba(82, 82, 82, 0.85);
+  background-color: #e50;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.85);
+  color: white;
 }
 
 .underline {
   /* I don't know why this is needed, I just added it and it worked in IE Edge. If we remove this width, the gradient breaks in IE Edge */
   width: calc(100%);
-  background-image: linear-gradient(transparent calc(100% - 2px), black 10px);
+  background-image: linear-gradient(transparent calc(100% - 1px), rgba(255, 255, 255, 0.85) 10px);
   background-repeat: no-repeat;
   background-size: 0% 100%;
   transition: background-size 1s;

@@ -2,8 +2,39 @@
   <div class="container">
     <div class="row justify-content-center p-2">
       <div class="col-12 text-align-center">
-
+        <h3 class="feed-detail title text-white">{{feed.title}}</h3>
+        <div class="feed-detail text-white">
+          {{{feed.content}}}
+        </div>
       </div>
     </div>
   </div>
 </section>
+  <div class="fixed-bottom m-4 side-bar-tool">
+    <a style="right: 20px;left: auto" href="javascript:history.back()">
+      <i class="fas fa-arrow-left" style="font-size: 32px"></i>
+    </a>
+    <i id="back-top" class="fas fa-arrow-up" style="font-size: 32px"></i></a>
+    
+  </div>
+
+<script>
+  var img = $('img');
+  console.log(img);
+  if(img) {
+    img.each(function (e) {
+      var source = $(this).attr('data-original')
+      if(source) {
+        $(this).attr("src", "https://alligator.io" + source)
+      }
+    })
+  }
+  
+  $(document).ready(function() {
+    $('#back-top').click(function() {
+        $("html, body").animate({scrollTop: 0}, 500);
+    });
+  }); 
+
+
+</script>
