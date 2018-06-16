@@ -1,22 +1,73 @@
-<section class="bg-white" id="story-dashboard-main">
+<section class="bg-dark" id="story-dashboard-main">
   <div class="container">
     <div class="row justify-content-center p-2">
-      <div class="card-columns">
-        {{#each stories}}
-        <div class="card shadow p-3 bg-white rounded">
-          <div class="card-body">
-            <h5 class="card-title">{{title}}</h5>
-            <p class="card-text">{{{editor}}}</p>
-            <h4>{{user.username}}</h4>
+      <div class="">
+       <h1>Isotope - filtering</h1>
+
+      <div class="button-group filters-button-group">
+        <button class="button is-checked" data-filter="*">show all</button>
+        {{#each categories}}
+          <button class="button" data-filter=".{{category}}">{{category}}</button>
+        {{/each}}
+      </div>
+
+      <div class="grid">
+        <div class="grid-sizer"></div>
+        {{#each feeds}}
+        <div class="grid-item m-1 {{category}}" data-category="{{category}}">
+          <div class="card">
+            <div class="card-body" >
+              <h5 class="card-title">{{title}}</h5>
+              <a href="{{link}}" class="btn btn-primary">Go to the article</a>
+            </div>
           </div>
         </div>
         {{/each}}
+      </div>
       </div>
     </div>
   </div>
 </section>
 
+
+
+
+
 {{#if usernameAuth.username}}
 <a class="fixed-bottom m-4" style="right: 20px;left: auto" href="/story/1">
   <i class="fas fa-plus-square" style="font-size: 32px"></i>
 </a>{{/if}}
+
+<script>
+  // external js: isotope.pkgd.js
+
+// init Isotope
+var $grid = $('.grid').isotope({
+  itemSelector: '.grid-item',
+  layoutMode: "fitRows",
+  
+  percentPosition: true,
+  masonry: {
+    columnWidth: '.grid-sizer',
+    fitWidth: true
+  }
+
+});
+
+$('.button').on('click', function(e) {
+  const filterValue =  $(this).attr('data-filter');
+  console.log(filterValue)
+  $grid.isotope({ filter: filterValue });
+})
+// change is-checked class on buttons
+$('.button-group').each( function( i, buttonGroup ) {
+  var $buttonGroup = $( buttonGroup );
+  $buttonGroup.on( 'click', 'button', function() {
+    $buttonGroup.find('.is-checked').removeClass('is-checked');
+    $( this ).addClass('is-checked');
+  });
+});
+
+
+
+</script>

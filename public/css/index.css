@@ -58,3 +58,36 @@
 .google-btn:active {
   background: #1669F2;
 }
+
+/* ---- grid ---- */
+
+.grid {
+  background: #DDD;
+}
+
+/* clear fix */
+
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- .element-item ---- */
+
+/* 5 columns, percentage width */
+
+.grid-sizer {
+  width: 100%;
+}
+
+.grid-item {
+  width: 30%;
+}
+
+.grid-item {
+  float: left;
+  background: #0D8;
+  border: 2px solid #333;
+  border-color: hsla(0, 0%, 0%, 0.7);
+}
