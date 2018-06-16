@@ -726,3 +726,8 @@ only screen and (min-width: 40.063em) and (max-width: 70em) {
 .side-bar-tool a:hover {
   text-decoration: none;
 }
+
+#bookmark.active {
+  background-color: #f05f40;
+  color: white;
+}

@@ -10,31 +10,73 @@
     </div>
   </div>
 </section>
-  <div class="fixed-bottom m-4 side-bar-tool">
-    <a style="right: 20px;left: auto" href="javascript:history.back()">
-      <i class="fas fa-arrow-left" style="font-size: 32px"></i>
-    </a>
-    <i id="back-top" class="fas fa-arrow-up" style="font-size: 32px"></i></a>
-    
-  </div>
+<div class="fixed-bottom m-4 side-bar-tool">
+  <a style="right: 20px;left: auto" href="javascript:history.back()">
+    <i class="fas fa-arrow-left" style="font-size: 32px"></i>
+  </a>
+  <i id="back-top" class="fas fa-arrow-up" style="font-size: 32px"></i>
+  </a>
+  <i class="far fa-star {{#if bookmark}}active{{/if}}" style="font-size: 32px; padding: 3px" id="bookmark" data-feed-id="{{feed._id}}" data-userId="{{usernameAuth._id}}"></i>
+
+</div>
 
 <script>
   var img = $('img');
-  console.log(img);
-  if(img) {
+  if (img) {
     img.each(function (e) {
       var source = $(this).attr('data-original')
-      if(source) {
+      if (source) {
         $(this).attr("src", "https://alligator.io" + source)
       }
     })
   }
-  
-  $(document).ready(function() {
-    $('#back-top').click(function() {
-        $("html, body").animate({scrollTop: 0}, 500);
+
+  $(document).ready(function () {
+    $('#back-top').click(function () {
+      $("html, body").animate({
+        scrollTop: 0
+      }, 500);
     });
-  }); 
+  });
 
+  var $bookmark = $('#bookmark')
 
+  $bookmark.on("click", function (e) {
+    var data = {}
+    var userID = $(this).attr('data-userId');
+    var feedID = $(this).attr('data-feed-id')
+    console.log(userID, feedID, 'id')
+    if (!userID) {
+      var toast = new Toast('rgba(152, 22, 22, 01)', 'rgba(255, 255, 255, 1)');
+      toast.show('You need to login to bookmark this news')
+    } else {
+      data.userID = userID;
+      data.feedID = feedID;
+      console.log(window.location.hostname)
+
+      $.ajax({
+        type: 'POST',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        url: '/feed/:id',
+        success: function (data) {
+          if (data.status === 200) {
+            var toast = new Toast('rgba(125, 222, 22, 01)', 'rgba(222, 255, 255, 0.9)');
+            toast.show(data.type === 'bookmark' ? 'Bookmark success' : 'Remove bookmark success')
+            if (data.type === 'bookmark') {
+              toast.show('Bookmark success');
+              $bookmark.addClass('active');
+            } else {
+              $bookmark.removeClass('active');
+              toast.show('Remove bookmark success');
+            }
+          } else {
+            var toast = new Toast('rgba(157, 21, 22, 01)', 'rgba(255, 255, 255, 1)');
+            toast.show('Something went wrong. Please try again')
+          }
+        }
+      });
+    }
+
+  })
 </script>
