@@ -139,6 +139,10 @@
   background-size: 100% 100%;
 }
 
+#story-dashboard-main {
+  min-height: 100vh;
+}
+
 #story-dashboard-main a:hover {
   text-decoration: none;
 }
