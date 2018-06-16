@@ -62,7 +62,8 @@
 /* ---- grid ---- */
 
 .grid {
-  background: #DDD;
+  padding: 10px;
+  margin: 0 auto;
 }
 
 /* clear fix */
@@ -75,19 +76,20 @@
 
 /* ---- .element-item ---- */
 
-/* 5 columns, percentage width */
-
-.grid-sizer {
-  width: 100%;
-}
-
-.grid-item {
-  width: 30%;
-}
-
 .grid-item {
   float: left;
-  background: #0D8;
-  border: 2px solid #333;
-  border-color: hsla(0, 0%, 0%, 0.7);
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.grid-item>.card:hover {
+  transform: translate(-1px, -1px) scale(1.05);
+  border: 2px solid #f05f40;
+}
+
+#feeds-search {
+  background: #6c757d;
+  outline: #6c757d;
+  border: #6c757d;
+  color: white;
 }
