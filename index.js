@@ -97,6 +97,7 @@ const user = require('./routes/user');
 const story = require('./routes/story');
 const board = require('./routes/bullet');
 const feed = require('./routes/feed');
+const bookmarks = require('./routes/bookmark');
 
 const auth = require('./routes/auth');
 
@@ -128,7 +129,7 @@ app.use('/user', user);
 app.use('/story', story);
 app.use('/board', board);
 app.use('/feed', feed);
-
+app.use('/bookmarks', bookmarks);
 app.use('/auth', auth);
 
 const port = process.env.PORT || 5000;

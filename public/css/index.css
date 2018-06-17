@@ -139,6 +139,10 @@
   transition: background-size 1s;
 }
 
+.link:hover {
+  cursor: pointer;
+}
+
 .link:hover .underline {
   background-size: 100% 100%;
 }
