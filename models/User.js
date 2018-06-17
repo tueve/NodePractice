@@ -7,7 +7,10 @@ const UserSchema = new Schema({
   email: String,
   bookmarks: [
     {
-      feedID: String,
+      feedID: {
+				type: Schema.Types.ObjectId,
+				ref: 'feed'
+			},
       dateBookmark: {
         type: Date,
         default: Date.now
