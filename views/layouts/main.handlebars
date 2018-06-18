@@ -39,11 +39,11 @@
     crossorigin="anonymous"></script>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.39/jodit.min.css">
 
-    <script>
-      $(document).ready(function() {
-        $("#loader-screen").hide();
+  <script>
+    $(document).ready(function () {
+      $("#loader-screen").hide();
     });
-    </script>
+  </script>
   <!-- Custom styles for this template -->
   <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 </head>
@@ -51,7 +51,7 @@
 <body id="page-top">
   <div class="page">
 
-  {{> _navbar}} {{{body}}} {{> _toast}}
+    {{> _navbar}} {{{body}}} {{> _toast}}
   </div>
   {{> _loader}}
 
@@ -72,26 +72,29 @@
   <script src="/js/moment.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.39/jodit.min.js"></script>
   <script>
-
-
-
-
-
-
     var JoditTextArea = document.getElementById('story-dashboard-main');
     if (JoditTextArea) {
       var joditObj = $('.jodit-area');
       joditObj.map(function (elm) {
-        var defaultValue = $(joditObj[elm]).attr('default-value') ? $(joditObj[elm]).attr('default-value') :'<p>Type your story</p>'
+        var defaultValue = $(joditObj[elm]).attr('default-value') ? $(joditObj[elm]).attr('default-value') :
+          '<p>Type your story</p>'
         var editor = new Jodit(joditObj[elm], {
           minHeight: '300px',
         });
-         editor.value = defaultValue;
+        editor.value = defaultValue;
       });
     }
-
-    
   </script>
+  <div id="fb-root"></div>
+<div id="fb-root"></div>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0&appId=231287747465787&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 </body>
 
 </html>

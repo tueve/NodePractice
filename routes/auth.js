@@ -15,10 +15,7 @@ route.get(
 		failureRedirect: '/'
 	}),
 	(req, res) => {
-		req.flash(
-			'success_msg',
-			'you have been registered successfully'
-		);
+		req.flash('success_msg', 'you have been registered successfully');
 
 		res.redirect('/');
 	}
@@ -30,6 +27,14 @@ route.get('/verify', (res, req) => {
 	} else {
 		console.log('not auth');
 	}
+});
+
+route.get('/facebook', passport.authenticate('facebook'));
+
+route.get('/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }), function(req, res) {
+	// Successful authentication, redirect home.
+	req.flash('success_msg', 'you have been registered successfully');
+	res.redirect('/');
 });
 
 module.exports = route;

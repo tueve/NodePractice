@@ -16,7 +16,8 @@ router.get('/:id', async (req, res) => {
 	}
 	res.render('board/feed-detail', {
 		feed: feed[0],
-		bookmark
+		bookmark,
+		id: req.params.id
 	});
 });
 

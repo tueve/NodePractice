@@ -39,6 +39,7 @@ app.use(passport.session());
 // config for passport strategy
 require('./config/passport')(passport);
 require('./config/googleauth')(passport);
+require('./config/facebookauth')(passport);
 
 //configure middleware for flash
 app.use(flash());

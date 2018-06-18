@@ -1,5 +1,6 @@
 <section class="bg-dark" id="story-dashboard-main">
   <div class="container">
+    <div class="fb-like mb-3" data-href="https://node4newbie.herokuapp.com/feed/{{feed._id}}" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
     <div class="row justify-content-center p-2">
       <div class="col-12 text-align-center">
         <h3 class="feed-detail title text-white">{{feed.title}}</h3>
@@ -9,6 +10,7 @@
       </div>
     </div>
   </div>
+  <div class="fb-comments" data-href="https://node4newbie.herokuapp.com/feed/{{feed._id}}" data-numposts="20"></div>
 </section>
 <div class="fixed-bottom m-4 side-bar-tool">
   
