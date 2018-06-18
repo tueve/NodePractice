@@ -42,6 +42,7 @@
   <script>
     $(document).ready(function () {
       $("#loader-screen").hide();
+      $("#main").show();
     });
   </script>
   <!-- Custom styles for this template -->
@@ -49,7 +50,7 @@
 </head>
 
 <body id="page-top">
-  <div class="page">
+  <div class="page" id="main">
 
     {{> _navbar}} {{{body}}} {{> _toast}}
   </div>
