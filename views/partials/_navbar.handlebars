@@ -81,16 +81,16 @@
         or
       </div>
       <div class="row justify-content-center mb-3">
-        <a href="/auth/facebook" class="d-flex justify-content-center col-12 m-b-2">
+        <!-- <a href="/auth/facebook" class="d-flex justify-content-center col-12 m-b-2">
           <button class="fb-login-button social-signin facebook" data-use-continue-as="false" onlogin="checkLoginState();">Log in with facebook</button>
-        </a>
+        </a> -->
         <a href="/auth/google" class="d-flex justify-content-center col-12 m-b-2">
           <button class="social-signin google">Log in with Google+</button>
         </a>
       </div>
 
-      <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false"
-        data-auto-logout-link="false" data-use-continue-as="false" scope="public_profile,email" onlogin="checkLoginState();"></div>
+      <!-- <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false"
+        data-auto-logout-link="false" data-use-continue-as="false" scope="public_profile,email" onlogin="checkLoginState();"></div> -->
     </div>
   </div>
 </div>
@@ -123,11 +123,12 @@
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
-      testAPI();
+      getAPI(response.authResponse.accessToken);
+      console.log(response.authResponse.accessToken);
+
     } else {
       // The person is not logged into your app or we are unable to tell.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
+      console.log('error');
     }
   }
 
@@ -179,12 +180,28 @@
 
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
-  function testAPI() {
+  function getAPI(authKey) {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function (response) {
+      console.log(response)
       console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
+      var http = new XMLHttpRequest();
+      var url = '/auth/fb';
+      var params = {};
+
+      function getAPI(authKey) {
+        http.open('POST', url, true);
+
+        //Send the proper header information along with the request
+        http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+        http.onreadystatechange = function () { //Call a function when the state changes.
+          if (http.readyState == 4 && http.status == 200) {
+            alert(http.responseText);
+          }
+        }
+        http.send(response);
+      }
     });
   }
 </script>
