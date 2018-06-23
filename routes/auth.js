@@ -20,6 +20,12 @@ route.get('/verify', (res, req) => {
 		}
 });
 
+route.post('/facebook', (req, res) => {
+		req.flash('success_msg', 'you have been registered successfully');
+		res.json(req);
+		res.redirect('/');
+})
+
 route.get('/facebook', passport.authenticate('facebook', {authType: 'rerequest'}));
 
 route.get('/facebook/callback', passport.authenticate('facebook', {failureRedirect: '/login'}), function (req, res) {
