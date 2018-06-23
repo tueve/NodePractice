@@ -87,6 +87,11 @@
           <button class="social-signin google">Log in with Google+</button> 
         </a>
       </div>
+
+      <fb:login-button 
+  scope="public_profile,email"
+  onlogin="checkLoginState();">
+</fb:login-button>
     </div>
   </div>
 </div>
@@ -106,4 +111,10 @@
       http.send(params);
     })
   }
+  
+function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+}
 </script>
