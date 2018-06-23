@@ -308,3 +308,7 @@ button.social-signin.google {
   display: flex;
   border-radius: 5px;
 }
+
+.fb-like-share {
+  width: 100%;
+}
