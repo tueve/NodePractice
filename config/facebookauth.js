@@ -7,8 +7,11 @@ const User = mongoose.model('user');
 
 module.exports = function (passport) {
 		passport.use(new FacebookStrategy({
-				clientID: keys.facebookClientID, clientSecret: keys.facebookClientSecret, callbackURL: 'https://node4newbie.herokuapp.com//auth/facebook/callback'
-				// callbackURL: 'https://localhost:5000//auth/facebook/callback'
+				clientID: keys.facebookClientID, 
+				clientSecret: keys.facebookClientSecret, 
+				callbackURL: 'https://node4newbie.herokuapp.com//auth/facebook/callback',
+				passReqToCallback: true
+				// callbackURL: 'http://localhost:5000//auth/facebook/callback'
 
 		}, function (accessToken, refreshToken, profile, done) {
 				console.log(profile, 'profile');

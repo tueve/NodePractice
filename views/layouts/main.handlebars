@@ -96,14 +96,18 @@
   js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0&appId=231287747465787&autoLogAppEvents=1';
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+
 <script>
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '223715935095663',
+      cookie     : true,
       xfbml      : true,
-      version    : 'v3.0'
+      version    : '3.0'
     });
-    FB.AppEvents.logPageView();
+      
+    FB.AppEvents.logPageView();   
+      
   };
 
   (function(d, s, id){
@@ -113,6 +117,10 @@
      js.src = "https://connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
+   
+FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+});
 </script>
 </body>
 
